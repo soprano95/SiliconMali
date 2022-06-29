@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_152007) do
 
   create_table "portfolios", force: :cascade do |t|
     t.string "title"
+    t.string "subtitle"
     t.text "body"
     t.text "main_image"
     t.text "thumb_image"
