@@ -1,38 +1,70 @@
 class PortfoliosController < ApplicationController
-	def index
-		@portfolio_items = Portfolio.all
-	end
-	
-	 def new
-    @portfolio_item = Portfolio.new
+  before_action :set_portfolio, only: %i[ show edit update destroy ]
+
+  # GET /portfolios or /portfolios.json
+  def index
+    @portfolios = Portfolio.all
   end
 
+  # GET /portfolios/1 or /portfolios/1.json
+  def show
+  end
+
+  # GET /portfolios/new
+  def new
+    @portfolio = Portfolio.new
+  end
+
+  # GET /portfolios/1/edit
+  def edit
+  end
+
+  # POST /portfolios or /portfolios.json
   def create
-    @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))
+    @portfolio = Portfolio.new(portfolio_params)
 
     respond_to do |format|
-      if @portfolio_item.save
-        format.html { redirect_to portfolios_path, notice: 'Your portfolio item is now live.' }
+      if @portfolio.save
+        format.html { redirect_to portfolio_url(@portfolio), notice: "Portfolio was successfully created." }
+        format.json { render :show, status: :created, location: @portfolio }
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @portfolio.errors, status: :unprocessable_entity }
       end
     end
   end
 
-   def edit
-    @portfolio_item = Portfolio.find(params[:id])
-  end
-
+  # PATCH/PUT /portfolios/1 or /portfolios/1.json
   def update
-    @portfolio_item = Portfolio.find(params[:id])
-    
     respond_to do |format|
-      if @portfolio_item.update(params.require(:portfolio).permit(:title, :subtitle, :body))
-        format.html { redirect_to portfolios_path, notice: 'The record successfully updated.' }
+      if @portfolio.update(portfolio_params)
+        format.html { redirect_to portfolio_url(@portfolio), notice: "Portfolio was successfully updated." }
+        format.json { render :show, status: :ok, location: @portfolio }
       else
-        format.html { render :edit }
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @portfolio.errors, status: :unprocessable_entity }
       end
     end
   end
-  
+
+  # DELETE /portfolios/1 or /portfolios/1.json
+  def destroy
+    @portfolio.destroy
+
+    respond_to do |format|
+      format.html { redirect_to portfolios_url, notice: "Portfolio was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_portfolio
+      @portfolio = Portfolio.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def portfolio_params
+      params.require(:portfolio).permit(:title, :subtitle, :body, :main_image, :thumb_image)
+    end
 end
