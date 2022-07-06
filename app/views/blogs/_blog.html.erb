@@ -5,6 +5,11 @@
   </p>
 
   <p>
+    <strong>Status:</strong>
+    <%=  link_to blog.status, toggle_status_blog_path(blog)  %>
+  </p>
+
+  <p>
     <strong>Body:</strong>
     <%= blog.body %>
   </p>
