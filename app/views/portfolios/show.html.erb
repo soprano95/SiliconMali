@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @portfolio %>
+<p>
+    <strong>Main image:</strong>
+    <%= image_tag @portfolio.main_image  %>
+  </p>
 
 <div>
   <%= link_to "Edit this portfolio", edit_portfolio_path(@portfolio) %> |

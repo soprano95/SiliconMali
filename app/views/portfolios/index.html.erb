@@ -6,6 +6,10 @@
   <% @portfolios.each do |portfolio| %>
     <%= render portfolio %>
     <p>
+    <strong>Thumb image:</strong>
+    <%= image_tag portfolio.thumb_image %>
+  </p>
+    <p>
       <%= link_to "Show this portfolio", portfolio %>
     </p>
   <% end %>
