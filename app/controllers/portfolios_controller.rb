@@ -13,6 +13,7 @@ class PortfoliosController < ApplicationController
   # GET /portfolios/new
   def new
     @portfolio = Portfolio.new
+     3.times { @portfolio.technologies.build }
   end
 
   # GET /portfolios/1/edit
@@ -21,7 +22,7 @@ class PortfoliosController < ApplicationController
 
   # POST /portfolios or /portfolios.json
   def create
-    @portfolio = Portfolio.new(portfolio_params)
+    @portfolio_item = Portfolio.new(portfolio_params)
 
     respond_to do |format|
       if @portfolio.save
@@ -65,6 +66,6 @@ class PortfoliosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def portfolio_params
-      params.require(:portfolio).permit(:title, :subtitle, :body, :main_image, :thumb_image)
+      params.require(:portfolio).permit(:title, :subtitle, :body, :main_image, :thumb_image, technologies_attributes: [:name])
     end
 end

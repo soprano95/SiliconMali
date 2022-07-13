@@ -6,6 +6,12 @@
     <%= image_tag @portfolio.main_image  %>
   </p>
 
+  <h2>Technologies Used:</h2>
+
+<% @portfolio.technologies.each do |t| %>
+<p><%= t.name %></p>
+<% end %>
+
 <div>
   <%= link_to "Edit this portfolio", edit_portfolio_path(@portfolio) %> |
   <%= link_to "Back to portfolios", portfolios_path %>
