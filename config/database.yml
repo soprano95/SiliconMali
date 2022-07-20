@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: SiliconMali_production
-  username: SiliconMali
+  username: abdoulazizsacko
   password: <%= ENV["SILICONMALI_DATABASE_PASSWORD"] %>
