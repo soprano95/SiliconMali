@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'silicon-mali_contact', to: 'pages#contact'
   resources :blogs
 
+  get 'signup', to: 'users#new'
+  resources :users, except: [:new]
+
    resources :blogs do
     member do
       get :toggle_status
