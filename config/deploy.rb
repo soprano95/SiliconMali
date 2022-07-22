@@ -5,6 +5,8 @@ set :application, "siliconmali"
 set :repo_url, "https://github.com/soprano95/SiliconMali.git"
 set :branch, "main"
 
+set :passenger_restart_with_touch, true
+
 
 
 # Deploy to the user's home directory
