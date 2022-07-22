@@ -8,7 +8,7 @@ set :branch, "main"
 
 
 # Deploy to the user's home directory
-set :deploy_to, "/home/abdoulazizsacko/#{fetch :application}"
+set :deploy_to, "/home/siliconmalis/#{fetch :application}"
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
 
