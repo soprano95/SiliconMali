@@ -1,4 +1,10 @@
 <div id="<%= dom_id blog %>">
+  <div class="card-header font-italic">
+            by <%= blog.user.username if blog.user %>
+              <% if blog.user %>
+              by <%= link_to blog.user.username, user_path(blog.user) %>
+            <% end %>
+    </div>
   <p>
     <strong>Title:</strong>
     <%= blog.title.upcase %>
