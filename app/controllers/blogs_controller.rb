@@ -22,7 +22,7 @@ class BlogsController < ApplicationController
   # POST /blogs or /blogs.json
   def create
     @blog = Blog.new(blog_params)
-    @blog.user = User.first
+    @blog.user = User.last
     @blog.topic = Topic.first
     respond_to do |format|
       if @blog.save
