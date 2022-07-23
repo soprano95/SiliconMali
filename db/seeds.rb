@@ -14,13 +14,6 @@ end
 
 puts "3 Topics created"
 
-3.times do |user|
-  User.create!(
-    username: "Sacko #{user}",
-    email: "sacko@3gmail.com ",
-    password_digest: "Sackoaziz"
-  )
-end
 
 10.times do |blog|
   Blog.create!(
