@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%= render 'layouts/alerts' %>
     <% if current_user %>
         <p>Hello <%= current_user.email %></p>
         <p>You are a [<%= current_user.role%>]</p>
