@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy toggle_status ]
-
+  before_action :authenticate_user!, except: %i[show index]
   # GET /blogs or /blogs.json
   def index
     @blogs = Blog.all
@@ -8,6 +8,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1 or /blogs/1.json
   def show
+    @blog.update(views: @blog.views + 1)
   end
 
   # GET /blogs/new

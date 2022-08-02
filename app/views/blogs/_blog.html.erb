@@ -3,12 +3,12 @@
     <strong>Title:</strong>
     <%= blog.title.upcase %>
   </p>
-
+    <h5>Posted by  <%= blog.user.email %></h5>
+    <h6><%= pluralize(blog.views, "view") %></h6>
   <p>
     <strong>Status:</strong>
     <%=  link_to blog.status, toggle_status_blog_path(blog)  %>
   </p>
-
   <p>
     <strong>Body:</strong>
     <%= blog.body %>
