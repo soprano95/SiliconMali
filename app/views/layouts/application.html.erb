@@ -14,18 +14,6 @@
   <body>
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/alerts' %>
-    <% if current_user %>
-        <p>Hello <%= current_user.email %></p>
-        <p>You are a [<%= current_user.role%>]</p>
-        <% if current_user.admin? %>
-          There are <%= User.count %> users in your system
-          <% end %>
-        <%= link_to "sign out!", destroy_user_session_path, 'data-turbo-method': :delete %>
-        <% else %>
-          <p>You are not signed in</p>
-          <%= link_to "sign up!", new_user_registration_path %>
-          <%= link_to "sign in!", new_user_session_path %>
-        <% end %>
         <main>
           <%= yield %>
         </main>
